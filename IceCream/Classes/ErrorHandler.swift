@@ -15,7 +15,7 @@ struct ErrorHandler {
     
     static let shared = ErrorHandler()
     
-    static let notificationDidChangeDiary: NSNotification.Name = NSNotification.Name("ICLOUD_ERROR_HANDLER")
+    static let notificationiCloudErrorHandler: NSNotification.Name = NSNotification.Name("ICLOUD_ERROR_HANDLER")
     
     /// We could classify all the result that CKOperation returns into the following five CKOperationResultTypes
     enum CKOperationResultType {
@@ -47,7 +47,7 @@ struct ErrorHandler {
         
         let message = returnErrorMessage(for: e.code)
         
-        NotificationCenter.default.post(name: ErrorHandler.notificationDidChangeDiary, object: e)
+        NotificationCenter.default.post(name: ErrorHandler.notificationiCloudErrorHandler, object: e)
         
         switch e.code {
             
