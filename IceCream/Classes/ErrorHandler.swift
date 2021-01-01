@@ -39,7 +39,10 @@ struct ErrorHandler {
     }
     
     func resultType(with error: Error?) -> CKOperationResultType {
-        guard error != nil else { return .success }
+        guard error != nil else {
+            NotificationCenter.default.post(name: ErrorHandler.notificationiCloudErrorHandler, object: nil)
+            return .success
+        }
         
         guard let e = error as? CKError else {
             return .fail(reason: .unknown, message: "The error returned is not a CKError")
